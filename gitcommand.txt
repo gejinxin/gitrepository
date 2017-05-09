@@ -1,0 +1,101 @@
+
+#你的名字和Email地址
+git config --global user.name "gejinxin"
+git config --global user.email "844156709@qq.com"
+
+#创建本地仓库(进入到仓库目录)
+git init
+
+#将新建文件提交到暂存区(stage)
+git add readme.txt
+
+#将暂存区文件提交到仓库
+git commit -m "提交说明"
+
+#查看仓库文件状态
+git status
+
+#查看工作区和版本库的差别
+git diff 文件名
+
+#查看暂存区和版本库里面最新版本的区别：
+git diff HEAD -- readme.txt
+
+#查看版本库的提交记录
+git log
+
+#版本回退(HEAD~100往上回退100版本)
+git reset --hard HEAD^  (^往上回退一个版本)
+
+#回退到固定版本3628164回退到的文件版本号
+git reset --hard 3628164
+
+#查看git每次执行的命令
+git reflog
+
+#还原工作区到版本库的内容
+git checkout -- 文件名
+
+#删除文件(再执行git commit 命令即把版本库的文件删除)
+git rm 文件名
+
+#创建ssh key
+ssh-keygen -t rsa -C "youremail@example.com"
+
+#本地添加远程仓库
+git remote add origin git@github.com:github用户名/远程仓库名称.git
+
+#本地仓库推送最新修改到github(git push -u origin master第一次推送本地所有内容)
+git push origin master
+
+#克隆github上的仓库到本地
+git clone git@github.com:github用户名/github仓库名称.git
+
+#创建git分支并切换到分支
+git checkout -b 分支名
+上面命令==下面两个命令
+#创建分支
+git branch 分支名
+#切换分支
+git checkout 分支名
+
+#查看当前分支
+git branch
+
+#合并分支到master主干
+git merge 分支名
+git merge --no-ff -m "commit注释" 分支名(常用的合并方式，合并后还能看出合并分支记录)
+
+#删除分支
+git branch -d 分支名
+git branch -D 分支名(强制删除未合并的分支)
+
+#在本地创建和远程分支对应的分支
+git checkout -b branch-name origin/branch-name
+
+#建立本地分支和远程分支的关联
+git branch --set-upstream branch-name origin/branch-name
+
+#查看远程仓库的抓取和推送信息
+git remote -v
+
+
+因此，多人协作的工作模式通常是这样：
+
+首先，可以试图用
+git push origin branch-name推送自己的修改；
+
+如果推送失败，则因为远程分支比你的本地更新，需要先用
+git pull试图合并；
+
+如果合并有冲突，则解决冲突，并在本地提交；
+
+没有冲突或者解决掉冲突后，再用
+git push origin branch-name推送就能成功！
+
+如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name。
+
+这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+
+
+
