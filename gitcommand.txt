@@ -98,4 +98,27 @@ git push origin branch-name推送就能成功！
 这就是多人协作的工作模式，一旦熟悉了，就非常简单。
 
 
+#更新远程仓库到本地
+#查看远程仓库的状态
+git remote -v
+
+origin  git@github.com:username/Animations.git (fetch)
+origin  git@github.com:username/Animations.git (push)
+
+#使用如下命令可以在本地新建一个temp分支，并将远程origin仓库的master分支代码下载到本地temp分支
+git fetch origin master:temp
+
+#使用如下命令来比较本地代码与刚刚从远程下载下来的代码的区别：
+git diff temp
+
+#对比区别之后，如果觉得没有问题，可以使用如下命令进行代码合并：
+git merge temp
+
+#如果temp分支不想要保留，可以使用如下命令删除该分支：
+git branch -d temp
+
+
+
+
+
 
